@@ -1,10 +1,10 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg fixed-top navbar-glass" id="mainNavbar">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar">
     <div class="container">
-        <a class="navbar-brand fw-bold font-monospace text-accent" href="#home">
-            &lt;Shahzad Ali /&gt;
+        <a class="navbar-brand fw-bold font-monospace" href="#home">
+            &lt;{{ profile.name|truncatewords:1 }} /&gt;
         </a>
-        <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -15,8 +15,8 @@
                 <li class="nav-item"><a class="nav-link nav-scroll" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link nav-scroll" href="#contact">Contact</a></li>
                 <li class="nav-item ms-lg-2">
-                    <a class="btn btn-outline-accent btn-sm px-3" href="{% url 'core:resume_download' %}">
-                        <i class="bi bi-download me-1"></i>Resume
+                    <a class="btn btn-primary btn-sm px-3 rounded-pill" href="{% url 'core:resume_download' %}">
+                        <i class="bi bi-download me-1"></i>{{ profile.resume_label }}
                     </a>
                 </li>
             </ul>

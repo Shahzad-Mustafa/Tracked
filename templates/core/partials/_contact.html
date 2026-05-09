@@ -1,69 +1,69 @@
-<section id="contact" class="py-5 section-divider">
+<section id="contact" class="py-5 section-light">
     <div class="container py-4">
         <div class="section-header text-center mb-5 animate-on-scroll">
-            <span class="section-label">Get In Touch</span>
+            <span class="section-tag">Get In Touch</span>
             <h2 class="section-title">Contact Me</h2>
-            <p class="text-secondary mt-2">Open to backend roles, freelance projects, and collaborations</p>
+            <p class="text-muted mt-2">Open to backend roles, freelance projects, and collaborations</p>
         </div>
 
-        <div class="row g-5 justify-content-center">
+        <div class="row g-4 justify-content-center">
             <div class="col-lg-4 animate-on-scroll">
                 <div class="contact-info-card p-4 h-100">
                     <h5 class="fw-bold mb-4">Let's Connect</h5>
 
-                    <div class="contact-item mb-4">
-                        <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                    {% if profile.email %}
+                    <div class="contact-row mb-4">
+                        <div class="contact-icon-wrap"><i class="bi bi-envelope-fill"></i></div>
                         <div>
-                            <div class="text-secondary small mb-1">Email</div>
-                            <a href="mailto:Shahzadmustafa755@gmail.com" class="text-light text-decoration-none">
-                                Shahzadmustafa755@gmail.com
-                            </a>
+                            <div class="contact-label">Email</div>
+                            <a href="mailto:{{ profile.email }}" class="contact-value">{{ profile.email }}</a>
                         </div>
                     </div>
+                    {% endif %}
 
-                    <div class="contact-item mb-4">
-                        <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+                    {% if profile.whatsapp_url %}
+                    <div class="contact-row mb-4">
+                        <div class="contact-icon-wrap"><i class="bi bi-whatsapp"></i></div>
                         <div>
-                            <div class="text-secondary small mb-1">WhatsApp</div>
-                            <a href="https://wa.me/923134046317" target="_blank" class="text-light text-decoration-none">
-                                +92 313 4046317
-                            </a>
+                            <div class="contact-label">WhatsApp</div>
+                            <a href="{{ profile.whatsapp_url }}" target="_blank" class="contact-value">{{ profile.phone }}</a>
                         </div>
                     </div>
+                    {% endif %}
 
-                    <div class="contact-item mb-4">
-                        <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                    {% if profile.location %}
+                    <div class="contact-row mb-4">
+                        <div class="contact-icon-wrap"><i class="bi bi-geo-alt-fill"></i></div>
                         <div>
-                            <div class="text-secondary small mb-1">Location</div>
-                            <span class="text-light">Lahore, Pakistan</span>
+                            <div class="contact-label">Location</div>
+                            <span class="contact-value">{{ profile.location }}</span>
                         </div>
                     </div>
+                    {% endif %}
 
-                    <div class="contact-item mb-4">
-                        <div class="contact-icon"><i class="bi bi-github"></i></div>
+                    {% if profile.github_url %}
+                    <div class="contact-row mb-4">
+                        <div class="contact-icon-wrap"><i class="bi bi-github"></i></div>
                         <div>
-                            <div class="text-secondary small mb-1">GitHub</div>
-                            <a href="https://github.com/Shahzad-Mustafa" target="_blank" class="text-light text-decoration-none">
-                                github.com/Shahzad-Mustafa
-                            </a>
+                            <div class="contact-label">GitHub</div>
+                            <a href="{{ profile.github_url }}" target="_blank" class="contact-value">{{ profile.github_url|cut:"https://" }}</a>
                         </div>
                     </div>
+                    {% endif %}
 
-                    <div class="mt-4 pt-3 border-top" style="border-color: var(--border-color) !important;">
-                        <div class="d-flex gap-3">
-                            <a href="https://linkedin.com/in/shahzad-mustafa" target="_blank" class="social-icon">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                            <a href="https://github.com/Shahzad-Mustafa" target="_blank" class="social-icon">
-                                <i class="bi bi-github"></i>
-                            </a>
-                            <a href="mailto:Shahzadmustafa755@gmail.com" class="social-icon">
-                                <i class="bi bi-envelope-fill"></i>
-                            </a>
-                            <a href="https://wa.me/923134046317" target="_blank" class="social-icon">
-                                <i class="bi bi-whatsapp"></i>
-                            </a>
-                        </div>
+                    <div class="d-flex gap-2 mt-4 pt-3 border-top">
+                        {% if profile.linkedin_url %}
+                        <a href="{{ profile.linkedin_url }}" target="_blank" class="social-btn"><i class="bi bi-linkedin"></i></a>
+                        {% endif %}
+                        {% if profile.github_url %}
+                        <a href="{{ profile.github_url }}" target="_blank" class="social-btn"><i class="bi bi-github"></i></a>
+                        {% endif %}
+                        {% if profile.email %}
+                        <a href="mailto:{{ profile.email }}" class="social-btn"><i class="bi bi-envelope-fill"></i></a>
+                        {% endif %}
+                        {% if profile.whatsapp_url %}
+                        <a href="{{ profile.whatsapp_url }}" target="_blank" class="social-btn"><i class="bi bi-whatsapp"></i></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -75,35 +75,35 @@
                         {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label class="form-label text-secondary small">Full Name</label>
+                                <label class="form-label fw-medium small">Full Name</label>
                                 {{ contact_form.name }}
                                 {% if contact_form.name.errors %}
                                 <div class="text-danger small mt-1">{{ contact_form.name.errors.0 }}</div>
                                 {% endif %}
                             </div>
                             <div class="col-sm-6">
-                                <label class="form-label text-secondary small">Email Address</label>
+                                <label class="form-label fw-medium small">Email Address</label>
                                 {{ contact_form.email }}
                                 {% if contact_form.email.errors %}
                                 <div class="text-danger small mt-1">{{ contact_form.email.errors.0 }}</div>
                                 {% endif %}
                             </div>
                             <div class="col-12">
-                                <label class="form-label text-secondary small">Subject</label>
+                                <label class="form-label fw-medium small">Subject</label>
                                 {{ contact_form.subject }}
                                 {% if contact_form.subject.errors %}
                                 <div class="text-danger small mt-1">{{ contact_form.subject.errors.0 }}</div>
                                 {% endif %}
                             </div>
                             <div class="col-12">
-                                <label class="form-label text-secondary small">Message</label>
+                                <label class="form-label fw-medium small">Message</label>
                                 {{ contact_form.message }}
                                 {% if contact_form.message.errors %}
                                 <div class="text-danger small mt-1">{{ contact_form.message.errors.0 }}</div>
                                 {% endif %}
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-accent px-4">
+                                <button type="submit" class="btn btn-primary rounded-pill px-4">
                                     <i class="bi bi-send me-2"></i>Send Message
                                 </button>
                             </div>

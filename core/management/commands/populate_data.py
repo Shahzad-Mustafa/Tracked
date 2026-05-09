@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from core.models import SkillCategory, Skill, Experience, Education, Project
+from core.models import Profile, SkillCategory, Skill, Experience, Education, Project
 import datetime
 
 
@@ -19,12 +19,36 @@ class Command(BaseCommand):
             Education.objects.all().delete()
             self.stdout.write(self.style.WARNING('Cleared.'))
 
+        self._create_profile()
         self._create_skill_categories()
         self._create_skills()
         self._create_experience()
         self._create_education()
         self._create_projects()
         self.stdout.write(self.style.SUCCESS('Portfolio data populated successfully!'))
+
+    def _create_profile(self):
+        Profile.objects.update_or_create(
+            name='Shahzad Ali',
+            defaults={
+                'tagline': 'Python Backend Developer',
+                'bio_short': 'Building scalable REST APIs and production systems with Django · FastAPI · AWS. 13+ production projects delivered across multiple industries.',
+                'bio_detail': "I'm a backend-focused developer with 2+ years of experience building scalable, production-grade web applications using Django, DRF, and FastAPI. Based in Lahore, Pakistan, I've delivered 13+ production projects across industries including real estate, recruitment, AI SaaS, and e-commerce. My expertise spans REST API design, database optimization, async systems with Celery + Redis, cloud infrastructure on AWS, and advanced web scraping covering 87+ websites.",
+                'email': 'Shahzadmustafa755@gmail.com',
+                'phone': '+92 313 4046317',
+                'whatsapp': '923134046317',
+                'location': 'Lahore, Pakistan',
+                'github_url': 'https://github.com/Shahzad-Mustafa',
+                'linkedin_url': 'https://linkedin.com/in/shahzad-mustafa',
+                'is_available': True,
+                'available_label': 'Available for opportunities',
+                'years_experience': '2+',
+                'total_projects': '13+',
+                'sites_scraped': '87+',
+                'open_to_remote': True,
+            }
+        )
+        self.stdout.write('  Profile created.')
 
     def _create_skill_categories(self):
         categories = [

@@ -17,12 +17,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_summernote',
     'core',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'core.middleware.VisitorTrackingMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,3 +76,17 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'Shahzadmustafa755@gmail.com')
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+        'height': '300px',
+        'toolbar': [
+            ['style',   ['bold', 'italic', 'underline', 'clear']],
+            ['font',    ['strikethrough']],
+            ['para',    ['ul', 'ol', 'paragraph']],
+            ['insert',  ['link']],
+            ['view',    ['codeview']],
+        ],
+    },
+}
