@@ -1,0 +1,13 @@
+New portfolio contact message
+
+From:    {{ msg.name }} <{{ msg.email }}>
+Subject: {{ msg.subject }}
+IP:      {{ msg.ip_address }}
+Time:    {{ msg.created_at }}
+
+---
+
+{{ msg.message }}
+
+---
+Reply to: {{ msg.email }}

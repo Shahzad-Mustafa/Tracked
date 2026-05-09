@@ -1,0 +1,76 @@
+<section id="home" class="hero-section d-flex align-items-center">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 animate-on-scroll">
+                <span class="badge bg-accent-subtle text-accent mb-3 px-3 py-2 rounded-pill">
+                    <i class="bi bi-circle-fill text-success me-1" style="font-size:0.6rem;"></i>
+                    Available for opportunities
+                </span>
+                <h1 class="display-4 fw-bold mb-2">
+                    Hi, I'm <span class="text-accent">Shahzad Ali</span>
+                </h1>
+                <h2 class="fs-3 text-secondary mb-4 fw-normal">Python Backend Developer</h2>
+                <p class="lead text-secondary mb-4" style="max-width:480px;">
+                    Building scalable REST APIs and production systems with
+                    <strong class="text-light">Django · FastAPI · AWS</strong>.
+                    {{ total_projects }} production projects delivered across multiple industries.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap mb-5">
+                    <div class="stat-badge">
+                        <span class="stat-number">{{ total_projects }}</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-number">{{ total_experience }}</span>
+                        <span class="stat-label">Years Exp</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-number">{{ total_scraped }}</span>
+                        <span class="stat-label">Sites Scraped</span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="#projects" class="btn btn-accent btn-lg px-4">
+                        <i class="bi bi-grid me-2"></i>View Projects
+                    </a>
+                    <a href="{% url 'core:resume_download' %}" class="btn btn-outline-secondary btn-lg px-4">
+                        <i class="bi bi-download me-2"></i>Download Resume
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 animate-on-scroll" style="animation-delay:0.2s;">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-dot red"></span>
+                        <span class="code-dot yellow"></span>
+                        <span class="code-dot green"></span>
+                        <span class="ms-2 text-secondary small font-monospace">shahzad.py</span>
+                    </div>
+                    <pre class="code-body"><code><span class="code-kw">class</span> <span class="code-class">ShahzadAli</span>:
+    role       <span class="code-op">=</span> <span class="code-str">"Python Backend Developer"</span>
+    location   <span class="code-op">=</span> <span class="code-str">"Lahore, Pakistan"</span>
+    experience <span class="code-op">=</span> <span class="code-str">"{{ total_experience }} years"</span>
+    projects   <span class="code-op">=</span> <span class="code-str">"{{ total_projects }} delivered"</span>
+
+    stack <span class="code-op">=</span> {
+        <span class="code-str">"backend"</span>:  [<span class="code-str">"Django"</span>, <span class="code-str">"DRF"</span>, <span class="code-str">"FastAPI"</span>],
+        <span class="code-str">"cloud"</span>:    [<span class="code-str">"AWS EC2"</span>, <span class="code-str">"S3"</span>, <span class="code-str">"RDS"</span>],
+        <span class="code-str">"async"</span>:    [<span class="code-str">"Celery"</span>, <span class="code-str">"Redis"</span>],
+        <span class="code-str">"scraping"</span>: [<span class="code-str">"Scrapy"</span>, <span class="code-str">"Selenium"</span>],
+    }
+
+    open_to_work <span class="code-op">=</span> <span class="code-kw">True</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5 pt-3">
+            <a href="#about" class="scroll-indicator">
+                <i class="bi bi-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+</section>

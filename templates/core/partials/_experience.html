@@ -1,0 +1,72 @@
+<section id="experience" class="py-5 section-divider">
+    <div class="container py-4">
+        <div class="section-header text-center mb-5 animate-on-scroll">
+            <span class="section-label">Where I've Worked</span>
+            <h2 class="section-title">Experience</h2>
+        </div>
+
+        <div class="timeline">
+            {% for exp in experiences %}
+            <div class="timeline-item animate-on-scroll">
+                <div class="timeline-dot {% if exp.is_current %}current{% endif %}"></div>
+                <div class="timeline-content">
+                    <div class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-2">
+                        <div>
+                            <h4 class="fw-bold mb-1 text-accent">{{ exp.company }}</h4>
+                            <h5 class="fw-semibold mb-0">{{ exp.role }}</h5>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge {% if exp.is_current %}bg-success{% else %}bg-secondary{% endif %} mb-1">
+                                {% if exp.is_current %}<i class="bi bi-circle-fill me-1" style="font-size:0.55rem;"></i>Current{% else %}{{ exp.end_label }}{% endif %}
+                            </span>
+                            <div class="text-secondary small">{{ exp.start_label }} — {{ exp.end_label }}</div>
+                        </div>
+                    </div>
+
+                    {% if exp.description %}
+                    <p class="text-secondary mb-3 small">{{ exp.description }}</p>
+                    {% endif %}
+
+                    {% if exp.highlights %}
+                    <ul class="timeline-highlights mb-3">
+                        {% for highlight in exp.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if exp.tech_used %}
+                    <div class="d-flex flex-wrap gap-1">
+                        {% for tech in exp.tech_used %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if educations %}
+        <div class="mt-5 pt-3">
+            <h4 class="fw-bold mb-4 text-center text-secondary">Education</h4>
+            <div class="row g-3 justify-content-center">
+                {% for edu in educations %}
+                <div class="col-md-5 animate-on-scroll">
+                    <div class="edu-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="edu-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">{{ edu.degree }}</h6>
+                                <p class="text-accent mb-1 small">{{ edu.institution }}</p>
+                                <p class="text-secondary small mb-0">{{ edu.start_year }} — {{ edu.end_year }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>

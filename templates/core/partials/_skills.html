@@ -1,0 +1,28 @@
+<section id="skills" class="py-5 section-alt">
+    <div class="container py-4">
+        <div class="section-header text-center mb-5 animate-on-scroll">
+            <span class="section-label">What I Know</span>
+            <h2 class="section-title">Tech Stack</h2>
+        </div>
+
+        <div class="row g-4">
+            {% for category in skills_by_category %}
+            <div class="col-md-6 col-lg-4 animate-on-scroll">
+                <div class="skill-card h-100 p-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="skill-category-icon">
+                            <i class="bi {{ category.icon }}"></i>
+                        </span>
+                        <h5 class="mb-0 fw-semibold">{{ category.name }}</h5>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for skill in category.skills.all %}
+                        <span class="skill-pill cat-{{ forloop.parentloop.counter }}">{{ skill.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
